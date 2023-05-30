@@ -1,6 +1,10 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ShoppingCartContext } from '../../context'
 
 export const Navbar = () => {
+  const { count } = useContext(ShoppingCartContext)
+
   const leftRoutes = [
     {
       to: '/',
@@ -78,7 +82,7 @@ export const Navbar = () => {
             </NavLink>
           </li>
         ))}
-        <li>😊</li>
+        <li>🛒 {count}</li>
       </ul>
     </nav>
   )
