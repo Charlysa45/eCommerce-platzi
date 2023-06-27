@@ -2,15 +2,20 @@ import { useContext } from 'react'
 import { ShoppingCartContext } from '../../context'
 import './CheckoutSideMenu.css'
 import { OrderCard } from '../OrderCard'
+import { totalPrice } from '../../utils'
 
 export const CheckoutSideMenu = () => {
   const {
     isCheckoutSideMenuOpen,
     closeCheckoutSideMenu,
-    productToShow,
     cartProducts,
+    setCartProducts,
   } = useContext(ShoppingCartContext)
-  console.log(productToShow)
+
+  const handleDelete = (id) => {
+    const filteredProducts = cartProducts.filter((product) => product.id !== id)
+    setCartProducts(filteredProducts)
+  }
   return (
     <aside
       className={`${isCheckoutSideMenuOpen} ${
@@ -39,11 +44,21 @@ export const CheckoutSideMenu = () => {
         {cartProducts.map((product) => (
           <OrderCard
             key={product.id}
+            id={product.id}
             title={product.title}
             imageUrl={product.images}
             price={product.price}
+            handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className="px-6">
+        <p className="flex justify-between items-center">
+          <span className="font-light">Total</span>
+          <span className="font-medium text-2xl">
+            ${totalPrice(cartProducts)}
+          </span>
+        </p>
       </div>
     </aside>
   )
