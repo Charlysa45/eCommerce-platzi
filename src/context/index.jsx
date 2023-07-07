@@ -23,6 +23,8 @@ export const ShoppingCardProvider = ({ children }) => {
 
   const [cartProducts, setCartProducts] = useState([])
 
+  const [order, setOrder] = useState([])
+
   const data = {
     count,
     setCount,
@@ -36,6 +38,8 @@ export const ShoppingCardProvider = ({ children }) => {
     setProductToShow,
     cartProducts,
     setCartProducts,
+    order,
+    setOrder
   }
 
   return (

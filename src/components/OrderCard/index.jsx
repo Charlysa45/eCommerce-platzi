@@ -1,17 +1,8 @@
 export const OrderCard = (props) => {
   const { id, title, imageUrl, price, handleDelete } = props
-  return (
-    <div className="flex justify-between items-center mb-3">
-      <div className="flex items-center gap-2">
-        <figure className="w-20 h-20">
-          <img
-            className=" w-full h-full rounded-lg object-cover"
-            src={imageUrl[0]}
-            alt={title}
-          />
-        </figure>
-        <p className="text-sm font-light">{title}</p>
-      </div>
+  let renderXMarkIcon
+  if (handleDelete) {
+    renderXMarkIcon = (
       <div className="flex items-center gap-2">
         <p className="text-lg font-medium">{price}</p>
         <svg
@@ -30,6 +21,21 @@ export const OrderCard = (props) => {
           />
         </svg>
       </div>
+    )
+  }
+  return (
+    <div className="flex justify-between items-center mb-3">
+      <div className="flex items-center gap-2">
+        <figure className="w-20 h-20">
+          <img
+            className=" w-full h-full rounded-lg object-cover"
+            src={imageUrl[0]}
+            alt={title}
+          />
+        </figure>
+        <p className="text-sm font-light">{title}</p>
+      </div>
+      {renderXMarkIcon}
     </div>
   )
 }
