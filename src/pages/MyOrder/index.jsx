@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 
 export const MyOrder = () => {
   const { order } = useContext(ShoppingCartContext)
+  const currentPath = window.location.pathname
+  const index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  console.log(index)
   return (
     <>
       <div className="flex items-center justify-center relative w-80 mb-6">

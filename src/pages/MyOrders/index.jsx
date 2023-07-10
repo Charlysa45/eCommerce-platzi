@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 export const MyOrders = () => {
   const { order } = useContext(ShoppingCartContext)
+  console.log(order)
   return (
     <>
       <div className="flex items-center justify-center relative w-80">
@@ -27,7 +28,7 @@ export const MyOrders = () => {
         <h1>MyOrders</h1>
       </div>
       {order.map((order, index) => (
-        <Link key={index} to={`/my-orders/${order.id}`}>
+        <Link key={index} to={`/my-orders/${index}`}>
           <OrdersCard
             totalPrice={order.totalPrice}
             totalProducts={order.totalProducts}
