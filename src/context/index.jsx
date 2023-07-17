@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import { getProducts } from '../services/products'
 
 export const ShoppingCartContext = createContext()
 
@@ -25,6 +26,19 @@ export const ShoppingCardProvider = ({ children }) => {
 
   const [order, setOrder] = useState([])
 
+  const [products, setProducts] = useState(null)
+
+  const [searchByTitle, setSearchByTitle] = useState(null)
+
+  useEffect(() => {
+    const getResults = async () => {
+      const productsList = await getProducts()
+      setProducts(productsList)
+    }
+
+    getResults()
+  }, [])
+
   const data = {
     count,
     setCount,
@@ -39,7 +53,11 @@ export const ShoppingCardProvider = ({ children }) => {
     cartProducts,
     setCartProducts,
     order,
-    setOrder
+    setOrder,
+    products,
+    setProducts,
+    searchByTitle,
+    setSearchByTitle
   }
 
   return (

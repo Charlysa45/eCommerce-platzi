@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom'
 
 export const MyOrders = () => {
   const { order } = useContext(ShoppingCartContext)
-  console.log(order)
   return (
     <>
-      <div className="flex items-center justify-center relative w-80">
+      <div className="flex items-center justify-center relative w-80 mb-4">
         <Link to="/my-orders" className="absolute left-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +24,7 @@ export const MyOrders = () => {
             />
           </svg>
         </Link>
-        <h1>MyOrders</h1>
+        <h1 className='font-medium text-xl'>MyOrders</h1>
       </div>
       {order.map((order, index) => (
         <Link key={index} to={`/my-orders/${index}`}>
