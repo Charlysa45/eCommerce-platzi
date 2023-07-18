@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { ShoppingCartContext } from '../../context'
 
 export const Navbar = () => {
-  const { cartProducts } = useContext(ShoppingCartContext)
+  const { cartProducts, setSearchByCategory } = useContext(ShoppingCartContext)
 
   const leftRoutes = [
     {
@@ -59,6 +59,7 @@ export const Navbar = () => {
           <li key={route.text} className={route?.className}>
             <NavLink
               to={route.to}
+              onClick={() => setSearchByCategory(route.text)}
               className={({ isActive }) =>
                 isActive ? 'underline-offset-4' : ''
               }
